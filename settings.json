@@ -1,6 +1,5 @@
 {
   "packages": [
-    "git:github.com/localpibox/pi@main",
     "git:github.com/localpibox/lemonade-pi-plugin@main",
     "git:github.com/localpibox/pi-hermes-memory@fix/subprocess-provider",
     "npm:pi-mcp-adapter",
