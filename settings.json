@@ -1,0 +1,19 @@
+{
+  "packages": [
+    "git:github.com/localpibox/pi@main",
+    "git:github.com/localpibox/lemonade-pi-plugin@main",
+    "npm:pi-hermes-memory",
+    "npm:pi-mcp-adapter",
+    "npm:@tintinweb/pi-subagents",
+    "npm:pi-powerline-footer"
+  ],
+  "lastChangelogVersion": "0.82.1",
+  "theme": "dark",
+  "defaultProvider": "lemonade",
+  "defaultModel": "Qwen3.6-35B-A3B-MTP-GGUF",
+  "defaultThinkingLevel": "high",
+  "mcp": {
+    "directTools": true,
+    "toolPrefix": "server"
+  }
+}
