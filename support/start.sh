@@ -86,7 +86,7 @@ if [ "$FIRST_RUN" = "true" ]; then
   echo "[devstack] Installing core tools..."
   npm_install_global @earendil-works/pi-coding-agent
   npm_install_global @fission-ai/openspec
-  pi_install pi-hermes-memory
+  pi_install git:github.com/localpibox/pi-hermes-memory@fix/subprocess-provider
   pi_install pi-mcp-adapter
   npm_install_global exa-mcp-server
   npm_install_global agent-browser

@@ -2,7 +2,7 @@
   "packages": [
     "git:github.com/localpibox/pi@main",
     "git:github.com/localpibox/lemonade-pi-plugin@main",
-    "npm:pi-hermes-memory",
+    "git:github.com/localpibox/pi-hermes-memory@fix/subprocess-provider",
     "npm:pi-mcp-adapter",
     "npm:@tintinweb/pi-subagents",
     "npm:pi-powerline-footer"
