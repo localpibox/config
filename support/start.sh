@@ -90,7 +90,7 @@ if [ "$FIRST_RUN" = "true" ]; then
   pi_install pi-mcp-adapter
   npm_install_global exa-mcp-server
   npm_install_global agent-browser
-  pi_install git:github.com/cfxdevkit/lemonade-pi-plugin@main
+  pi_install git:github.com/localpibox/lemonade-pi-plugin@main
 
   # Rebuild native modules
   echo "[devstack] Rebuilding native modules..."
@@ -109,23 +109,6 @@ if [ "$FIRST_RUN" = "true" ]; then
   python3 -m venv "${HOME_DIR}/.venvs/devstack" 2>/dev/null || true
   source "${HOME_DIR}/.venvs/devstack/bin/activate"
   pip install --upgrade pip 2>/dev/null || true
-
-  # --- Copy shared skills from image to volume (first run only) -----------
-  echo "[devstack] Installing skills..."
-  SHARED_SKILLS_VOLUME="${HOME_DIR}/.pi/agent/skills"
-  if [ -d "/opt/pi-skills" ] && [ ! -d "$SHARED_SKILLS_VOLUME" ]; then
-    cp -r /opt/pi-skills "$SHARED_SKILLS_VOLUME"
-    echo "    Copied skills from image"
-  elif [ -d "/opt/pi-skills" ]; then
-    for skill_dir in /opt/pi-skills/*/; do
-      [ -d "$skill_dir" ] || continue
-      skill_name=$(basename "$skill_dir")
-      if [ ! -d "$SHARED_SKILLS_VOLUME/$skill_name" ]; then
-        cp -r "$skill_dir" "$SHARED_SKILLS_VOLUME/$skill_name"
-        echo "      → $skill_name"
-      fi
-    done
-  fi
 
   # --- Install support tools to PATH ----------------------------------------
   echo "[devstack] Installing support tools..."
