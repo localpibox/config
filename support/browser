@@ -3,12 +3,13 @@
 # Usage: source /usr/local/bin/browser
 #        agent-browser open https://example.com
 #
-# Environment: DEVCONTAINER_WORKSPACE_DIR (defaults to /home/dev/workspace)
+# Environment: LPB_DEVCONTAINER_WORKSPACE_DIR (defaults to /home/dev/workspace)
+# Loads LPB_* vars from .env in workspace directory.
 
-WORKSPACE="${DEVCONTAINER_WORKSPACE_DIR:-/home/dev/workspace}"
+WORKSPACE="${LPB_DEVCONTAINER_WORKSPACE_DIR:-/home/dev/workspace}"
 set -a
-# .env.browser lives at workspace root
-source "${WORKSPACE}/.env.browser"
+# .env lives at workspace root (merged from .env + .env.browser)
+source "${WORKSPACE}/myproject/.env" 2>/dev/null || true
 set +a
 
 # If the first argument is not 'source', execute the rest as a command

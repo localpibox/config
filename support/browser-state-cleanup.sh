@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# browser-state-cleanup.sh — housekeeping for /browser-states/ volume
+# browser-state-cleanup.sh — housekeeping for browser session state
 #
-# Run on container start (post-start.sh) or manually.
+# Runs on container start (via start.sh) or manually.
 # Remove sessions older than 7 days OR when count exceeds 20.
 # Also kills orphaned Chrome/agent-browser processes.
+#
+# State directory: ~/.agent-browser/sessions/ (mounted via -v ~/.localpibox/agent-browser)
+# This survives container rebuilds — only old sessions are pruned.
 set -euo pipefail
 
-STATE_DIR="/browser-states"
+STATE_DIR="${HOME}/.agent-browser/sessions"
 MAX_AGE_DAYS=7
 MAX_COUNT=20
 
@@ -33,5 +36,4 @@ if [ "$CURRENT" -gt "$MAX_COUNT" ]; then
 fi
 
 REMAINING=$(ls -1d "$STATE_DIR"/*/ 2>/dev/null | wc -l)
-logger -t browser-states "Cleanup complete. Remaining sessions: $REMAINING" 2>/dev/null || \
-  echo "browser-states: Cleanup complete. Remaining sessions: $REMAINING"
+echo "  Cleanup complete. Remaining sessions: $REMAINING"
