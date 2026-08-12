@@ -1,0 +1,55 @@
+{
+  "settings": {
+    "directTools": false,
+    "idleTimeout": 0
+  },
+  "mcpServers": {
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "lifecycle": "keep-alive",
+      "directTools": false
+    },
+    "agent-browser": {
+      "command": "agent-browser",
+      "args": [
+        "mcp",
+        "--tools",
+        "core,network,tabs,state,react,debug"
+      ],
+      "env": {
+        "AGENT_BROWSER_SESSION": "${PI_WORKTREE_ID}",
+        "AGENT_BROWSER_IDLE_TIMEOUT_MS": "300000"
+      },
+      "lifecycle": "keep-alive",
+      "directTools": false
+    },
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp",
+      "args": [
+        "--wsEndpoint",
+        "ws://127.0.0.1:9222",
+        "--experimentalVision"
+      ],
+      "env": {},
+      "enabled": false
+    },
+    "context7-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "lifecycle": "keep-alive"
+    }
+  }
+}

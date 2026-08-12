@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "models": {
+    "default": "Qwen3.6-35B-A3B-MTP-GGUF",
+    "provider": "lemonade",
+    "subagent": {
+      "general-purpose": null,
+      "Explore": null,
+      "Plan": null
+    },
+    "memory": null
+  },
+  "extensions": {
+    "@tintinweb/pi-subagents": {
+      "disableDefaultAgents": true,
+      "globalDefaultModel": null,
+      "toolDescriptionMode": "compact"
+    },
+    "lpb-memory": {
+      "llmModelOverride": "qwen3.5-9b-FLM",
+      "llmThinkingOverride": "low",
+      "reviewTransport": "subprocess"
+    }
+  }
+}
