@@ -1,0 +1,39 @@
+# Secrets — never commit
+.env
+.env.local
+
+# Runtime state inside ~/.pi/agent/ (config repo IS the agent config dir)
+# Pi + extensions write these into the repo working tree; must not pollute
+# `git status` or trigger lpb-config's local-change guard.
+.initialized
+.devstack-env
+auth.json
+models-store.json
+models.json
+trust.json
+mcp-cache*.json
+mcp-npx-cache.json
+mcp/
+sessions/
+git/
+npm/
+tmp/
+tools/
+bin/
+.pi-hermes-locks.sqlite*
+pi-hermes-memory/
+ssh-host-keys/
+agent-browser/
+projects-memory/
+gh-config/
+browser-lession/
+
+# Git
+.git/
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
