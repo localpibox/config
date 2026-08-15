@@ -99,6 +99,40 @@ Support utilities are installed to `/opt/pi-support/`:
 | `/opt/pi-support/start.sh` | Start script |
 | `/opt/pi-support/validate-subagent-output.ts` | Subagent output validation |
 
+## Environment Variables
+
+API keys and configuration are managed across two `.env.example` files:
+
+| File | Convention | Purpose |
+|---|---|---|
+| `devstack/.env.example` | `LPB_` prefix | Devstack container (used by `lpb.py`) |
+| `.pi/agent/.env.example` | bare name | Agent config (used by MCP servers) |
+
+**start.sh bridges `LPB_*` → bare name** for third-party compatibility:
+
+```
+LPB_EXA_API_KEY (devstack) → EXA_API_KEY (MCP server reads this)
+```
+
+Priority chain (highest → lowest):
+1. Shell env (`export EXA_API_KEY=...`)
+2. Devstack `.env` file (`LPB_EXA_API_KEY=...`)
+3. Runtime defaults (`lpb.conf.env` baked into image)
+4. Hardcoded fallback
+
+This means **setting `LPB_EXA_API_KEY` in devstack's `.env` is sufficient** —
+`start.sh` automatically promotes it to the bare `EXA_API_KEY` the MCP server needs.
+
+### Bridged Variables
+
+| LPB_ Prefix | Bare Name | Used By |
+|---|---|---|
+| `LPB_EXA_API_KEY` | `EXA_API_KEY` | Exa MCP server |
+| `LPB_CONTEXT7_API_KEY` | `CONTEXT7_API_KEY` | Context7 MCP server |
+| `LPB_CONNECTION_TOKEN` | `CONNECTION_TOKEN` | OpenVSCode |
+| `LPB_EDITOR_HOST` | `HOST` | OpenVSCode |
+| `LPB_ED_PORT` | `ED_PORT` | OpenVSCode |
+
 ## Quick Reference
 
 - `/settings` — Change thinking level, theme, delivery, transport

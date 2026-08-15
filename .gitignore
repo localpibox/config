@@ -28,6 +28,13 @@ projects-memory/
 gh-config/
 browser-lession/
 
+# Local state — per-user, not shared
+extensions/
+lpb-memory/
+projects-memory/
+web-search-cache/
+settings.json
+
 # Git
 .git/
 # Editor
