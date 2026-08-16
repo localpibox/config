@@ -43,4 +43,5 @@ settings.json
 
 # OS
 .DS_Store
-Thumbs.dblpb-memory-config.json
+Thumbs.db
+lpb-memory-config.json
