@@ -23,4 +23,4 @@ custom skills, subagents, and support utilities. It is installed to
 3. Open a PR against `main`.
 
 See the full guide at
-[devstack/CONTRIBUTING.md](https://github.com/localpibox/devstack/blob/main/CONTRIBUTING.md).
+[devstack/CONTRIBUTING.md](https://github.com/lpb-stack/devstack/blob/main/CONTRIBUTING.md).

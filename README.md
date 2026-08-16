@@ -2,7 +2,7 @@
 
 Reproducible Pi.dev agent configuration: settings, MCP servers, custom skills, subagents, and bootstrap install script.
 
-> **⚡ [← Back to LocalPibox](https://github.com/localpibox/localpibox)** — project overview, architecture, and the full stack.
+> **⚡ [← Back to LocalPibox](https://github.com/lpb-stack)** — project overview, architecture, and the full stack.
 
 ## Repository Structure
 
@@ -91,10 +91,10 @@ lpb-config --tag dev workspace ensure
 - **Model:** Qwen3.6-35B-A3B-MTP-GGUF
 - **Thinking:** medium (default); adjustable via `/settings` in Pi TUI
 - **Packages:** extensions installed at runtime (from `settings.json#packages`):
-  - `git:github.com/localpibox/lemonade-pi-plugin@lpb`
-  - `git:github.com/localpibox/lpb-memory@main`
+  - `git:github.com/lpb-stack/lemonade-pi-plugin@lpb`
+  - `git:github.com/lpb-stack/lpb-memory@main`
   - `npm:pi-mcp-adapter`
-  - `git:github.com/localpibox/pi-subagents@lpb`
+  - `git:github.com/lpb-stack/pi-subagents@lpb`
   - `npm:pi-powerline-footer`
 
 ### lpb-memory-config.json
@@ -140,16 +140,16 @@ container boot, these files are seeded into `~/.pi/agent/`.
 
 | Repo | Role |
 |---|---|
-| [devstack](https://github.com/localpibox/devstack) | Container image + `lpb` launcher |
-| [pi](https://github.com/localpibox/pi) | Pi monorepo fork (Qwen reasoning) |
-| [lemonade-pi-plugin](https://github.com/localpibox/lemonade-pi-plugin) | Lemonade provider extension |
-| [pi-subagents](https://github.com/localpibox/pi-subagents) | Subagent model registry |
-| [lpb-memory](https://github.com/localpibox/lpb-memory) | Persistent memory extension |
-| [config](https://github.com/localpibox/config) | This repo (settings, skills, agents) |
+| [devstack](https://github.com/lpb-stack/devstack) | Container image + `lpb` launcher |
+| [pi](https://github.com/lpb-stack/pi) | Pi monorepo fork (Qwen reasoning) |
+| [lemonade-pi-plugin](https://github.com/lpb-stack/lemonade-pi-plugin) | Lemonade provider extension |
+| [pi-subagents](https://github.com/lpb-stack/pi-subagents) | Subagent model registry |
+| [lpb-memory](https://github.com/lpb-stack/lpb-memory) | Persistent memory extension |
+| [config](https://github.com/lpb-stack/config) | This repo (settings, skills, agents) |
 
-See the [devstack](https://github.com/localpibox/devstack) repo for container setup
+See the [devstack](https://github.com/lpb-stack/devstack) repo for container setup
 and [localpibox.github.io](https://localpibox.github.io) for the project site.
 
 ## Contributing
 
-See the [stack CONTRIBUTING guide](https://github.com/localpibox/devstack/blob/main/CONTRIBUTING.md).
+See the [stack CONTRIBUTING guide](https://github.com/lpb-stack/devstack/blob/main/CONTRIBUTING.md).
