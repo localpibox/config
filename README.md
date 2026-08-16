@@ -44,12 +44,44 @@ config/
 
 
 
-```bash
+```
 # Install with defaults (to ~/.pi/agent/)
 bash install.sh
 
 # Install to custom location
 bash install.sh /path/to/custom/pi/agent
+```
+
+## lpb-config Utility
+
+Shipped in the devstack image at `/opt/pi-support/lpb-config.py` (symlinked to
+`lpb-config` in PATH). Manage stack configuration from inside any container.
+
+### Commands
+
+```
+lpb-config status               # Show config repo state
+lpb-config update               # Fetch + fast-forward config repo
+lpb-config reset [--force]      # Re-clone (destructive)
+lpb-config merge                # Interactive merge
+lpb-config align                # Update extension pins to latest tags
+
+lpb-config validate             # Full stack alignment check
+lpb-config workspace status     # Workspace repo branches + alignment
+lpb-config workspace sync       # Symlinks + git pull
+lpb-config workspace ensure     # Fix branch alignment
+lpb-config workspace sync --extensions  # Sync extension pins to VERSION
+
+lpb-config memory show          # Show lpb-memory config
+lpb-config memory setup         # Interactive config wizard
+lpb-config memory setup --non-interactive  # Generate from template
+```
+
+### Pipeline override
+
+```
+lpb-config --tag main validate   # Force main pipeline check
+lpb-config --tag dev workspace ensure
 ```
 
 ## Configuration
@@ -66,10 +98,27 @@ bash install.sh /path/to/custom/pi/agent
   - `npm:pi-powerline-footer`
 
 ### lpb-memory-config.json
-Configuration for the lpb-memory extension:
-- **consolidationTimeoutMs**: 300000 (5 min timeout for memory consolidation)
-- Installed to `~/.pi/agent/lpb-memory-config.json` by `install.sh`
-- Copied to runtime by devstack on container startup
+
+Configuration for the lpb-memory extension. Generated at first boot from
+`lpb-memory-config.json.template` — the template is tracked, the config is not.
+
+```bash
+# Review current config
+lpb-config memory show
+
+# Interactive setup wizard
+lpb-config memory setup
+
+# Non-interactive (from template)
+lpb-config memory setup --non-interactive
+```
+
+Default settings (from template):
+- **reviewTransport**: subprocess (offload to NPU)
+- **memoryMode**: legacy-inject (visible to AI every turn)
+- **memoryCharLimit**: 3000 (context optimized)
+- **failureInjectionMaxEntries**: 3
+- **No llmModelOverride** — uses main model (user configures after /login)
 
 ### mcp.json
 - **exa** — Web search and content fetch (requires EXA_API_KEY)
