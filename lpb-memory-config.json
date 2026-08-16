@@ -1,6 +1,0 @@
-{
-  "reviewTransport": "subprocess",
-  "llmModelOverride": "qwen3.5-9b-FLM",
-  "reviewTimeoutMs": 300000,
-  "consolidationTimeoutMs": 300000
-}

@@ -1,0 +1,13 @@
+{
+  "reviewTransport": "subprocess",
+  "memoryMode": "legacy-inject",
+  "memoryCharLimit": 3000,
+  "userCharLimit": 3000,
+  "projectCharLimit": 2000,
+  "failureInjectionEnabled": true,
+  "failureInjectionMaxEntries": 3,
+  "failureInjectionMaxAgeDays": 3,
+  "memoryPolicyStyle": "none",
+  "reviewTimeoutMs": 300000,
+  "consolidationTimeoutMs": 300000
+}
