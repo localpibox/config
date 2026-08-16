@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "git:github.com/localpibox/lemonade-pi-plugin@__LPB_VERSION__",
+    "git:github.com/localpibox/lpb-memory@__LPB_VERSION__",
+    "npm:pi-mcp-adapter",
+    "git:github.com/localpibox/pi-subagents@__LPB_VERSION__",
+    "npm:pi-powerline-footer",
+    "@upstash/context7-mcp"
+  ],
+  "theme": "dark",
+  "defaultThinkingLevel": "medium",
+  "mcp": {
+    "directTools": false,
+    "toolPrefix": "server"
+  },
+  "tuiMode": "fullscreen"
+}
