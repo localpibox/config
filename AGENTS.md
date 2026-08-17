@@ -4,12 +4,12 @@
 
 This Pi.dev stack is organized across 6 repositories:
 
-1. **pi** (`localpibox/pi`) — Forked and patched Pi monorepo with `reasoning_effort` support for Qwen models
-2. **lemonade-pi-plugin** (`localpibox/lemonade-pi-plugin`) — Lemonade provider plugin with Qwen reasoning model detection
-3. **config** (`localpibox/config`) — This repo: settings, skills, agents, support files
-4. **devstack** (`localpibox/devstack`) — Docker-based development environment
-5. **pi-subagents** (`localpibox/pi-subagents`) — centralized subagent model registry
-6. **lpb-memory** (`localpibox/lpb-memory`) — persistent memory extension (subprocess reviews)
+1. **pi** (`lpb-stack/pi`) — Forked and patched Pi monorepo with `reasoning_effort` support for Qwen models
+2. **lemonade-pi-plugin** (`lpb-stack/lemonade-pi-plugin`) — Lemonade provider plugin with Qwen reasoning model detection
+3. **config** (`lpb-stack/config`) — This repo: settings, skills, agents, support files
+4. **devstack** (`lpb-stack/devstack`) — Docker-based development environment
+5. **pi-subagents** (`lpb-stack/pi-subagents`) — centralized subagent model registry
+6. **lpb-memory** (`lpb-stack/lpb-memory`) — persistent memory extension (subprocess reviews)
 
 ## Model Configuration
 
