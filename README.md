@@ -76,7 +76,7 @@ Workspace/validate operations live in `lpb-devstack` (dev-time tool):
 
 ```
 lpb-devstack validate                          # Full stack alignment check
-lpb-devstack workspace status | sync | ensure  # Workspace repo management
+lpb-devstack workspace status | sync | sync-pins  # Workspace repo management
 ```
 
 ### Template rendering
