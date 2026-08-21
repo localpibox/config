@@ -54,8 +54,8 @@ bash install.sh /path/to/custom/pi/agent
 
 ## lpb-config Utility
 
-Shipped in the devstack image at `/opt/pi-support/lpb-config.py` (symlinked to
-`lpb-config` in PATH). Manage stack configuration from inside any container.
+Shipped in the devstack image at `/opt/pi-support/lpb-config` (symlinked to
+`lpb-config` in PATH). Manage the config repo from inside any container.
 
 ### Commands
 
@@ -64,25 +64,31 @@ lpb-config status               # Show config repo state
 lpb-config update               # Fetch + fast-forward config repo
 lpb-config reset [--force]      # Re-clone (destructive)
 lpb-config merge                # Interactive merge
+lpb-config render [--force]     # Regenerate runtime config from templates
 lpb-config align                # Update extension pins to latest tags
-
-lpb-config validate             # Full stack alignment check
-lpb-config workspace status     # Workspace repo branches + alignment
-lpb-config workspace sync       # Symlinks + git pull
-lpb-config workspace ensure     # Fix branch alignment
-lpb-config workspace sync --extensions  # Sync extension pins to VERSION
 
 lpb-config memory show          # Show lpb-memory config
 lpb-config memory setup         # Interactive config wizard
 lpb-config memory setup --non-interactive  # Generate from template
 ```
 
-### Pipeline override
+Workspace/validate operations live in `lpb-devstack` (dev-time tool):
 
 ```
-lpb-config --tag main validate   # Force main pipeline check
-lpb-config --tag dev workspace ensure
+lpb-devstack validate                          # Full stack alignment check
+lpb-devstack workspace status | sync | ensure  # Workspace repo management
 ```
+
+### Template rendering
+
+This repo ships templates (`settings.json.template`,
+`lpb-memory-config.json.template`); the rendered runtime files are gitignored.
+`start.sh` generates them on first boot only, so lpb-config also renders:
+`reset` re-renders (force), `update`/`merge` re-render (non-forcing), and
+`lpb-config render [--force]` regenerates on demand. Non-forcing render never
+overwrites — it creates missing files and warns on stale version pins;
+`--force` merges (user keys and user-added packages preserved; template pins
+win in `settings.json`, local keys win in the memory config).
 
 ## Configuration
 
